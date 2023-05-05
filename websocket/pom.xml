@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.bjpowernode</groupId>
+    <artifactId>websocket</artifactId>
+    <version>1.0.0</version>
+
+    <!--项目打war包-->
+    <packaging>war</packaging>
+
+    <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+    </properties>
+
+    <dependencies>
+
+        <!--java ee 7规范的依赖-->
+        <dependency>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>7.0</version>
+            <scope>provided</scope>
+        </dependency>
+
+    </dependencies>
+
+    <build>
+        <plugins>
+            <!-- 配置编译插件 -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.5.1</version>
+                <configuration>
+                    <source>1.8</source>
+                    <target>1.8</target>
+                    <encoding>UTF-8</encoding>
+                </configuration>
+            </plugin>
+
+            <!--引用tomcat插件-->
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <!--配置tomcat插件所有目标都采用如下的参数-->
+                <configuration>
+                    <server>tomcat7</server>
+                    <hostName>localhost</hostName>   <!-- Default: localhost -->
+                    <port>8080</port>                <!-- 启动端口 Default:8080 -->
+                    <path>/</path>                <!-- 访问应用路径，默认为/${project.artifactId}-->
+                    <uriEncoding>UTF-8</uriEncoding> <!-- uri编码 Default: ISO-8859-1 -->
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
